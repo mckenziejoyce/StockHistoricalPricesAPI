@@ -1,18 +1,21 @@
-#Mock Stock API
+# Mock Stock API
 
 This is an API I created to return stock information, created to match the schema of the following API: https://iexcloud.io/docs/core/HISTORICAL_PRICES
 
-Running the project will create the API on a local host and open a Swagger window to let you test the different method options.
+Running the project will create the API on local host and open a Swagger window to let you test the different method options.
+
+This app uses an in-memory database. If the app is stopped and started, the preceding GET request will not return any data. If no data is returned, POST data to the app.
 
 ## GET Daily Returns for Stock with Date Range
 {url}/api/StockHistory/DailyReturns/{symbol}
-  Optional Parameters:
-    fromDate - First date of range to return info on (If no date is passed in, assumed first day of current year)
-    toDate - Last date of range to return info on (If no date is passed in, assume the current date)
+
+Optional Parameters:
+* fromDate - First date of range to return info on (If no date is passed in, assumed first day of current year)
+* toDate - Last date of range to return info on (If no date is passed in, assume the current date)
 
 Range must be 5 years or less
 
-##Example of how to connect to this API (C#):
+## Example of how to connect to this API (C#):
 
 ```
 public async Task<DailyReturnsData[]> getDailyReturns(string symbol, string? fromDate = null, string? toDate = null)
@@ -47,7 +50,7 @@ public async Task<DailyReturnsData[]> getDailyReturns(string symbol, string? fro
   return dailyReturns;
 }
 ```
-##Example Request Body for POST
+## Example Request Body for POST
 ```
 {
     "close": 278.8,
